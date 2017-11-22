@@ -20,4 +20,14 @@ class TestDeveloper: XCTestCase {
             return developer.numberOfMaxibonsToGet >= 0
         })
     }
+    
+    func testDeveloperName() {
+        property("A developer has a correct name") <- forAll({ (name: String) -> Testable in
+
+            print("Text: \(name)")
+            let developer = Developer(name: name, numberOfMaxibonsToGet: 1)
+            print("Developer name: \(developer.name)")
+            return developer.name == name
+        })
+    }
 }
