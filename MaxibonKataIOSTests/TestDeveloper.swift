@@ -13,8 +13,10 @@ import SwiftCheck
 class TestDeveloper: XCTestCase {
     
     func testDeveloperNumberOfMaxibonsToGet() {
-        property("A developer can not get a negative number of Maxibon") <- forAll({ (developer: Developer) -> Testable in
-            print("\(developer.name) gets \(developer.numberOfMaxibonsToGet) maxibon")
+        property("A developer can not get a negative number of Maxibon") <- forAll({ (numberOfMaxibonsToGet: Int) -> Testable in
+            
+            let developer = Developer(name: "Developer", numberOfMaxibonsToGet: numberOfMaxibonsToGet)
+            print("Developer numberOfMaxibonsToGet \(developer.numberOfMaxibonsToGet)")
             return developer.numberOfMaxibonsToGet >= 0
         })
     }
